@@ -8,20 +8,24 @@
             <div class="myH2">
                 <form action="/search" method="POST">
                     <label for="source">Enter your source:</label>
-                    <select name="source" id="source">
+                    <input list="cities" name="source" id="source">
+                        <datalist id="cities">
                         <% for(let i=0 ; i < stations.length ; i++) { %>
                             <option value="<%= stations[i].city %>">
                                 <%= stations[i].city %>
                             </option>
                             <% } %>
+                        </datalist>
                     </select>
                     <label for="destination">Enter your destination:</label>
-                    <select name="destination" id="destination">
+                    <input list="destinations" name="destination" id="destination">
+                        <datalist id="destinations">
                         <% for(let i=0 ; i < stations.length ; i++) { %>
                             <option value="<%= stations[i].city %>">
                                 <%= stations[i].city %>
                             </option>
                             <% } %>
+                        </datalist>
                     </select>
                     <input type="submit" value="Search">
                 </form>
