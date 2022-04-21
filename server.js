@@ -177,6 +177,13 @@ app.post('/book/:train_no', async (req, res) => {
     req.session.date = req.body.date;
     req.session.seat_class = req.body.class;
     console.log(req.session.date);
+    let today = new Date().toISOString().slice(0, 10)
+    if (date<today)
+    {
+        req.session.error_noseat = 2;
+        res.redirect('/book/' + train_no);
+        return;
+    }
     let seat_class = req.body.class;
     let data = [];
     let sql = `SELECT * FROM   TRAIN_INFO  WHERE train_no = '${train_no}'`;
